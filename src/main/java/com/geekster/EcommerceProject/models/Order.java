@@ -9,23 +9,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "Orders")
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_user_userId")
-    private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Users orderUser;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_product_productId")
-    private Product product;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Product orderProduct;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_address_addressId")
-    private Address address;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Address orderAddress;
 
-    private int productQuantity;
+    private Integer productQuantity;
 }

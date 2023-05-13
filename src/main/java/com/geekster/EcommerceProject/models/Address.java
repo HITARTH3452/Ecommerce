@@ -1,5 +1,7 @@
 package com.geekster.EcommerceProject.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,18 +11,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "addressId")
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    private String name;
-    private String lendmark;
-    private String phoneNumber;
-    private String zipcode;
-    private String state;
+    private Long addressId;
+    private String addressName;
+    private String addressLandmark;
+    private String addressPhoneNumber;
+    private String addressZipcode;
+    private String addressState;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_user_userid")
-    private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Users user;
+
+
 }

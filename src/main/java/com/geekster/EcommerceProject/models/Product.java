@@ -16,10 +16,10 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    private String name;
-    private int price;
-    private String description;
-    private String category;
-    private String brand;
+    private Long productId;
+    private String productName;
+    private int productPrice;
+    private String productDescription;
+    private String productCategory;
+    private String productBrand;
 }
